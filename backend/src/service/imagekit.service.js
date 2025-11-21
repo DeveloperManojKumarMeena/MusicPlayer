@@ -14,7 +14,8 @@ function uploadFile(file){
     return new Promise((resolve, reject)=>{
         imagekit.upload({
             file:file.buffer,
-            fileName:new mongoose.Types.ObjectId().toString(10),
+            fileName:file.originalname,
+            folder:"music-uploads"
         },(error,result)=>{
             if(error){
                 reject(error);
