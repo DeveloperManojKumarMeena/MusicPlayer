@@ -34,4 +34,13 @@ const mood = await AiService(req.file.originalname)
     })
 })
 
+
+router.get('/songs',async(req,res)=>{
+    const songs = await songModel.find()
+    res.json({
+        Message:"request sent successfully",
+        data:songs
+})
+})
+
 module.exports=router
