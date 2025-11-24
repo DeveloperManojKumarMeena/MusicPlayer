@@ -10,7 +10,7 @@ var imagekit = new ImageKit({
 });
 
 
-function uploadFile(file){
+function uploadFileAudio(file){
     return new Promise((resolve, reject)=>{
         imagekit.upload({
             file:file.buffer,
@@ -25,4 +25,21 @@ function uploadFile(file){
         })
     })
 }
-module.exports = uploadFile;
+
+function coverFileUpload(file){
+    return new Promise((resolve, reject)=>{
+        imagekit.upload({
+            file:file.buffer,
+            fileName:file.originalname,
+            folder:"CoverPhoto"
+        },(error,result)=>{
+            if(error){
+                reject(error);
+            }else{
+                resolve(result);
+            }
+        })
+    })
+}
+
+module.exports = { uploadFileAudio, coverFileUpload };

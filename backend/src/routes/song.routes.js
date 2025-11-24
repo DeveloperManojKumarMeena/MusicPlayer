@@ -1,20 +1,33 @@
 const express = require('express')
-const uploadFile = require('../service/imagekit.service')
+const {uploadFileAudio,coverFileUpload} = require('../service/imagekit.service')
 const multer = require("multer")
 const AiService = require('../service/ai.service')   
 const songModel = require('../models/songs.model')
 
 const router = express.Router()
 
-const audiofile = multer({storage:multer.memoryStorage()})
+const upload = multer({ storage: multer.memoryStorage() });
+
+// const audiofile = multer({storage:multer.memoryStorage()})
+// const coverfile = multer({storage:multer.memoryStorage()})
 
 
 
-router.post('/songs',audiofile.single("audio"),async(req,res)=>{
 
-const filedata = await uploadFile(req.file)
-const mood = await AiService(req.file.originalname)
+router.post('/songs',upload.fields([
+    { name: 'audio'},
+     { name: 'cover' }
+    ]),async(req,res)=>{
+        
+        console.log(req.files.audio[0].originalname);
+        console.log(req.files.cover[0].originalname);
+    
 
+const AudioUrl = await uploadFileAudio(req.files.audio[0])
+
+const mood = await AiService(req.files.audio[0].originalname)
+
+const coverUrl = await coverFileUpload(req.files.cover[0]);
    let moodText = mood.text;
 
    moodText = moodText.substring(moodText.indexOf(`{`),moodText.lastIndexOf(`}`)+1)
@@ -24,8 +37,9 @@ const mood = await AiService(req.file.originalname)
    const newSong = await songModel.create({
         title:moodText.title,
         artist:moodText.artist,
-        audio:filedata.url,
-        mood:moodText.mood
+        audio:AudioUrl.url,
+        mood:moodText.mood,
+        cover:coverUrl.url
     })
     res.json({
         Message:"request sent successfully",
