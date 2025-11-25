@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+nav{
+    display: flex;
+    height: 10vh;
+    width: 100%;
+    background-color: black;
+    color:white;
+    align-items: center;
+    justify-content: space-between;
+}
+nav img{
+    height: 10vh;
+    width: 100%;
+}
+ul{
+    list-style: none;
+    display: flex; 
+    gap: 20px;  
+}
+ul li{
+    padding: 5px 15px;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 12px;
+}
