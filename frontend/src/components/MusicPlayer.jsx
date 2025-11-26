@@ -6,7 +6,7 @@ const MusicPlayer = () => {
       <center>
       <div className="seekbar">
      
-      <input type="range" value={0} />
+      <input type="range" value={1} />
       <span>00:00:00</span>
       
       </div>

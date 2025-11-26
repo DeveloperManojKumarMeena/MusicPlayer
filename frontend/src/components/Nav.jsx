@@ -3,7 +3,7 @@ import '../style/Nav.css'
 const Nav = () => {
   return (
     <nav>
-        <div className='logo'><img src="./public/Logo.png" alt="Logo" /></div>
+        <div className='logo'><img src="./public/Logo.png" alt="Logo" />MAIPLAER</div>
         <ul>
         <li>Home</li>
         <li>My Playlist</li>

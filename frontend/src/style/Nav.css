@@ -12,7 +12,15 @@ nav{
     align-items: center;
     justify-content: space-between;
 }
+.logo{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+}
 nav img{
+    padding: 15px 0px 15px 15px;
     height: 10vh;
     width: 100%;
 }
@@ -26,4 +34,14 @@ ul li{
     cursor: pointer;
     border: 1px solid white;
     border-radius: 12px;
+     font-family: 'Roboto Mono', monospace;
 }
+ ul li:hover{
+    background-color: white;
+    color: black;
+    transition: 0.3s ease-in-out;
+}
+ul li:active{
+    transform: scale(0.8);
+    transition: 0.1s ease-in-out;
+}   

@@ -1,7 +1,7 @@
 .MusicPlayer {
     height: 15vh;
     width: 100%;
-    background-color: rgb(142, 155, 231);
+    background-color: rgb(0, 0, 0);
     color:white;
 }
 .seekbar{
@@ -30,5 +30,10 @@
     width:40px;
     height:40px;
     cursor: pointer;
-   filter:contrast(100)
+   filter: invert(1);
+
 }
+.controls img:active{
+    transform: scale(0.8);
+    transition: 0.2s ease-in-out;
+} 
