@@ -1,3 +1,7 @@
+.playersticky{
+    position: sticky;
+    top: 0;
+}
 .MusicPlayer {
     height: 15vh;
     width: 100%;

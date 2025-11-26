@@ -1,7 +1,74 @@
-.Songlist{
-height: 75vh;
-width: 100%;
-background-image: url(../public/jeremy-bishop-G9i_plbfDgk-unsplash.jpg);
-background-size: cover;
-background-position: center;
+.Songlist {
+    height: 75vh;
+    width: 100%;
+    background-image: url(../public/jeremy-bishop-G9i_plbfDgk-unsplash.jpg);
+    background-size: cover;
+    background-position: center;
+    padding-top: 5%;
+    display: flex;
+}
+
+.leftcard {
+    background-color: rgba(255, 255, 255, 0.089);
+    color: white;
+    margin-left: 10%;
+    height: 370px;
+    width: 17%;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 60px;
+
+}
+
+.leftcard img {
+    object-fit: cover;
+    height: 280px;
+    border-radius: 20px;
+}
+
+.rightcard {
+    width: 50%;
+    height: 60vh;
+    border: 1px solid white;
+    background-color: rgba(250, 252, 252, 0.146);
+    border-radius: 15px;
+    padding: 20px 25px ;
+    margin-left: 100px;
+    overflow-x: hidden;
+
+}
+.rightcard::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+}
+.rightcard::-webkit-scrollbar-track{
+    background-color: rgba(1, 37, 68, 0.155);
+}
+
+.songlist {
+    background-color: rgba(255, 255, 255, 0.158);
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    align-items: center;
+    justify-items: center;
+    height: 60px;
+    width: 100%;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border-radius: 1px solid black;
+    
+}
+
+.image {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.banner{
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
