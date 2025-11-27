@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from './components/Nav'
 import Songlist from './components/Songlist'
 import MusicPlayer from './components/MusicPlayer'
 import './style/MusicPlayer.css'
+
+
+
+
 const App = () => {
+
+
+
+
+
   return (
     <div>
       <Nav />
