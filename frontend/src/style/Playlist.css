@@ -1,81 +1,200 @@
+/* ==== MAIN WRAPPER ==== */
 .Songlist {
-    height: 75vh;
+    min-height: 75vh;
     width: 100%;
-    background-image: url(../public/jeremy-bishop-G9i_plbfDgk-unsplash.jpg);
+    background-image: url('/jeremy-bishop-G9i_plbfDgk-unsplash.jpg'); /* public folder */
     background-size: cover;
     background-position: center;
-    padding-top: 5%;
+    padding: 5% 5%;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    box-sizing: border-box;
 }
 
+/* ==== LEFT CARD (Now Playing) ==== */
 .leftcard {
-    background-color: rgba(255, 255, 255, 0.089);
+    background-color: rgba(255, 255, 255, 0.09);
     color: white;
-    margin-left: 10%;
     height: 370px;
-    width: 17%;
-    border: 1px solid white;
+    width: 22%;
+    min-width: 240px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
-    padding: 20px;
-    margin-top: 60px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+}
 
+.leftcard h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
 }
-.btnimg{
-    cursor: pointer;
-}
-.btnimg:active{
-    transform: scale(0.8);
-    transition: 0.1s ease-in-out;
-}   
 
 .leftcard img {
     object-fit: cover;
-    height: 280px;
-    border-radius: 20px;
+    height: 230px;
+    width: 100%;
+    border-radius: 16px;
 }
 
-.rightcard {
-    width: 50%;
-    height: 60vh;
-    border: 1px solid white;
-    background-color: rgba(250, 252, 252, 0.146);
-    border-radius: 15px;
-    padding: 20px 25px ;
-    margin-left: 100px;
-    overflow-x: hidden;
-
-}
-.rightcard::-webkit-scrollbar{
-    width: 8px;
-    height: 8px;
-}
-.rightcard::-webkit-scrollbar-track{
-    background-color: rgba(1, 37, 68, 0.155);
-}
-
-.songlist {
-    background-color: rgba(255, 255, 255, 0.158);
+.leftcard > div {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+/* ==== RIGHT SIDE LIST WRAPPER ==== */
+.rightcard {
+    flex: 1;
+    max-width: 650px;
+    height: 60vh;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(250, 252, 252, 0.18);
+    border-radius: 15px;
+    padding: 16px 18px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Scrollbar styling */
+.rightcard::-webkit-scrollbar {
+    width: 6px;
+}
+.rightcard::-webkit-scrollbar-track {
+    background-color: rgba(1, 37, 68, 0.15);
+}
+.rightcard::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+}
+
+/* ==== EACH SONG ROW ==== */
+.songlist {
+    background-color: rgba(255, 255, 255, 0.16);
+    display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
     height: 60px;
     width: 100%;
     color: white;
-    padding: 10px 20px;
-    border-radius: 30px;
-    border-radius: 1px solid black;
-    
+    padding: 8px 16px;
+    border-radius: 999px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.image {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
+/* current playing song highlight */
+.songlist.active-song {
+    background-color: rgba(0, 0, 0, 0.65);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+    transform: translateY(-1px);
 }
-.banner{
+
+/* hover effect */
+.songlist:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* left part (image + title) */
+.banner {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 14px;
+    min-width: 0; /* title truncate ke liye */
+}
+
+/* circle image */
+.image {
+    height: 46px;
+    width: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* title text */
+#title {
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 210px;
+}
+
+/* play/pause icon */
+.btnimg {
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.btnimg:active {
+    transform: scale(0.85);
+    transition: 0.1s ease-in-out;
+}
+
+/* ==== RESPONSIVE STYLES ==== */
+
+/* Tablet and below */
+@media (max-width: 992px) {
+    .Songlist {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+        padding-top: 3rem;
+    }
+
+    .leftcard {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+        order: 1;
+    }
+
+    .rightcard {
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+        order: 2;
+        height: 55vh;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .Songlist {
+        padding: 3rem 4%;
+    }
+
+    .leftcard {
+        height: auto;
+    }
+
+    .leftcard img {
+        height: 200px;
+    }
+
+    .songlist {
+        padding: 8px 12px;
+        height: auto;
+    }
+
+    .image {
+        height: 40px;
+        width: 40px;
+    }
+
+    #title {
+        max-width: 150px;
+        font-size: 0.85rem;
+    }
+
+    .rightcard {
+        height: 50vh;
+    }
 }

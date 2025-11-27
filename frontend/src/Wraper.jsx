@@ -4,7 +4,9 @@ import axios from './utils/axios'
 export const dataContext = createContext(null)
 const Wraper = (props) => {
 const [allsonglist, setallsonglist] = useState([])
-
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+const currentSong = allsonglist[currentIndex] || null;
   const playlist = async()=>{
     try {
       const {data} =await axios.get('/songs')
@@ -20,7 +22,15 @@ const [allsonglist, setallsonglist] = useState([])
 console.log(allsonglist)
   
 
-  return (<dataContext.Provider value={[allsonglist ,setallsonglist]}>
+  return (<dataContext.Provider value={{
+        allsonglist,
+        setallsonglist,
+        currentIndex,
+        setCurrentIndex,
+        isPlaying,
+        setIsPlaying,
+        currentSong,
+      }}>
     {props.children}
     </dataContext.Provider>
   )
