@@ -19,7 +19,7 @@ const currentSong = allsonglist[currentIndex] || null;
   useEffect(()=>{
     playlist()
   },[])
-console.log(allsonglist)
+
   
 
   return (<dataContext.Provider value={{
